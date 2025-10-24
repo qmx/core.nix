@@ -3,11 +3,10 @@
   programs.git = {
     enable = true;
 
-    aliases = {
-      graph = "log --oneline --graph --all";
-    };
-
-    extraConfig = {
+    settings = {
+      alias = {
+        graph = "log --oneline --graph --all";
+      };
       init = {
         defaultBranch = "master";
       };

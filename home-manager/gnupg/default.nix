@@ -10,7 +10,7 @@
     enableZshIntegration = true;
     defaultCacheTtl = 1800;
     maxCacheTtl = 7200;
-    pinentryPackage = pkgs.pinentry_mac;
+    pinentry.package = pkgs.pinentry_mac;
     grabKeyboardAndMouse = false;
     extraConfig = ''
       # Clean configuration without problematic options
