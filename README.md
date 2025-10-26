@@ -116,7 +116,7 @@ cd core.nix
 git commit -m "Update configuration"
 
 cd ../dotfiles
-nix flake lock --update-input core
+nix flake update core
 ```
 
 ## Customization
