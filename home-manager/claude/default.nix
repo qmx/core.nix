@@ -20,6 +20,9 @@
         ];
       };
     };
+    commands = {
+      commit = builtins.readFile ./commands/commit.md;
+    };
   };
 
   programs.git.ignores = [
