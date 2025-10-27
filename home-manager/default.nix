@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./claude
     ./direnv
     ./gh
     ./git
