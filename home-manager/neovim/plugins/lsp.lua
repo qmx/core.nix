@@ -1,8 +1,10 @@
--- LSP configuration
-local lspconfig = require('lspconfig')
+-- LSP configuration using vim.lsp.config (Neovim 0.11+)
 
 -- Nix LSP
-lspconfig.nil_ls.setup({
+vim.lsp.config('nil_ls', {
+  cmd = { 'nil' },
+  filetypes = { 'nix' },
+  root_markers = { 'flake.nix', '.git' },
   settings = {
     ['nil'] = {
       formatting = {
@@ -11,9 +13,13 @@ lspconfig.nil_ls.setup({
     },
   },
 })
+vim.lsp.enable('nil_ls')
 
 -- Lua LSP
-lspconfig.lua_ls.setup({
+vim.lsp.config('lua_ls', {
+  cmd = { 'lua-language-server' },
+  filetypes = { 'lua' },
+  root_markers = { '.luarc.json', '.luarc.jsonc', '.git' },
   settings = {
     Lua = {
       runtime = {
@@ -32,6 +38,7 @@ lspconfig.lua_ls.setup({
     },
   },
 })
+vim.lsp.enable('lua_ls')
 
 -- Neovim 0.11+ provides built-in LSP keybindings:
 -- K - Hover documentation
