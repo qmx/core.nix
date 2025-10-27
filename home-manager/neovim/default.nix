@@ -46,6 +46,13 @@
         config = builtins.readFile ./plugins/treesitter.lua;
       }
 
+      # Gruvbox color scheme
+      {
+        plugin = gruvbox-nvim;
+        type = "lua";
+        config = builtins.readFile ./plugins/gruvbox.lua;
+      }
+
       # Lightweight formatter
       {
         plugin = conform-nvim;
