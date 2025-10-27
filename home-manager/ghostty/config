@@ -19,7 +19,6 @@ quit-after-last-window-closed = true
 
 # macOS specific
 macos-window-shadow = true
-macos-titlebar-style = hidden
 
 # Clipboard
 clipboard-read = allow
