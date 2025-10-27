@@ -1,0 +1,3 @@
+-- Fugitive Git integration configuration
+-- No global keybindings - use :G or :Git commands directly
+-- Press g? inside fugitive buffers to see context-specific mappings
