@@ -1,1 +1,1 @@
--- claudecode.nvim uses defaults, no additional config needed
+require('claudecode').setup({})
