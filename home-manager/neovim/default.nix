@@ -53,6 +53,13 @@
         config = builtins.readFile ./plugins/gruvbox.lua;
       }
 
+      # Claude Code integration
+      {
+        plugin = claudecode-nvim;
+        type = "lua";
+        config = builtins.readFile ./plugins/claudecode.lua;
+      }
+
       # Lightweight formatter
       {
         plugin = conform-nvim;
