@@ -7,6 +7,7 @@
     ./gnupg
     ./jq
     ./neovim
+    ./opencode
     ./starship
     ./tmux
     ./zsh

@@ -60,6 +60,13 @@
         config = builtins.readFile ./plugins/claudecode.lua;
       }
 
+      # OpenCode AI coding assistant integration
+      {
+        plugin = opencode-nvim;
+        type = "lua";
+        config = builtins.readFile ./plugins/opencode.lua;
+      }
+
       # Lightweight formatter
       {
         plugin = conform-nvim;
