@@ -4,6 +4,7 @@
     ./claude
     ./direnv
     ./gh
+    ./ghostty
     ./git
     ./gnupg
     ./jq

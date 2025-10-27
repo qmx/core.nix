@@ -6,5 +6,8 @@
       autoUpdate = true;
       upgrade = true;
     };
+    casks = [
+      "ghostty"
+    ];
   };
 }

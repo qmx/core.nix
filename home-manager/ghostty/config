@@ -1,0 +1,37 @@
+# General Settings
+auto-update = off
+
+# Font settings
+font-size = 14
+font-family = MonaspiceXe Nerd Font
+
+# Window settings
+background = 000A00
+background-opacity = 1.00
+unfocused-split-opacity = 0.77
+window-height = 40
+window-width = 180
+window-padding-x = 6
+window-padding-y = 6
+window-padding-balance = true
+window-save-state = always
+quit-after-last-window-closed = true
+
+# macOS specific
+macos-window-shadow = true
+macos-titlebar-style = hidden
+
+# Clipboard
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = true
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Mouse
+focus-follows-mouse = true
+
+# Shell integration
+shell-integration-features = cursor,sudo,title
