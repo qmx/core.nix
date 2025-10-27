@@ -53,6 +53,13 @@
         config = builtins.readFile ./plugins/gruvbox.lua;
       }
 
+      # Code outline window for skimming and quick navigation
+      {
+        plugin = aerial-nvim;
+        type = "lua";
+        config = builtins.readFile ./plugins/aerial.lua;
+      }
+
       # Claude Code integration
       {
         plugin = claudecode-nvim;
@@ -66,6 +73,9 @@
         type = "lua";
         config = builtins.readFile ./plugins/opencode.lua;
       }
+
+      # Collection of small QoL plugins (required by claudecode and opencode)
+      snacks-nvim
 
       # Lightweight formatter
       {
