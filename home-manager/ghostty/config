@@ -19,6 +19,7 @@ quit-after-last-window-closed = true
 
 # macOS specific
 macos-window-shadow = true
+macos-option-as-alt = false
 
 # Clipboard
 clipboard-read = allow
