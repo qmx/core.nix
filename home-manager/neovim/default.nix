@@ -91,6 +91,13 @@
         config = builtins.readFile ./plugins/lsp.lua;
       }
 
+      # Which-key for keybinding discovery
+      {
+        plugin = which-key-nvim;
+        type = "lua";
+        config = builtins.readFile ./plugins/which-key.lua;
+      }
+
       # Required dependency for telescope
       plenary-nvim
     ];
