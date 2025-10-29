@@ -25,6 +25,8 @@ vim.opt.termguicolors = true
 vim.opt.signcolumn = 'yes'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 8
+vim.opt.wrap = true
+vim.opt.linebreak = true
 
 -- Editing
 vim.opt.undofile = true
