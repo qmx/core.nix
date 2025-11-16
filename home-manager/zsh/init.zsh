@@ -1,3 +1,10 @@
+# Nix setup - source profile if nix command not in PATH
+if ! command -v nix &> /dev/null; then
+  if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+    source ~/.nix-profile/etc/profile.d/nix.sh
+  fi
+fi
+
 # Zsh options
 setopt append_history
 setopt extended_history
