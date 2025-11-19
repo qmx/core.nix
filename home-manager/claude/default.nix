@@ -1,4 +1,29 @@
 { pkgs, lib, ... }:
+let
+  gitCommands = [
+    "Bash(git ls-tree:*)"
+    "Bash(git rev-parse:*)"
+    "Bash(git log:*)"
+    "Bash(git show:*)"
+    "Bash(git status:*)"
+    "Bash(git diff:*)"
+    "Bash(git reflog:*)"
+    "Bash(git describe:*)"
+    "Bash(git ls-files:*)"
+    "Bash(git cat-file:*)"
+    "Bash(git rev-list:*)"
+    "Bash(git show-ref:*)"
+    "Bash(git for-each-ref:*)"
+    "Bash(git symbolic-ref:*)"
+  ];
+
+  nixCommands = [
+    "Bash(nix build:*)"
+    "Bash(nix log:*)"
+    "Bash(nix search:*)"
+    "Bash(nix show-derivation:*)"
+  ];
+in
 {
   programs.claude-code = {
     enable = true;
@@ -8,21 +33,7 @@
       permissions = {
         auto-approve = [
           "Bash(find:*)"
-          "Bash(git ls-tree:*)"
-          "Bash(git rev-parse:*)"
-          "Bash(git log:*)"
-          "Bash(git show:*)"
-          "Bash(git status:*)"
-          "Bash(git diff:*)"
-          "Bash(git reflog:*)"
-          "Bash(git describe:*)"
-          "Bash(git ls-files:*)"
-          "Bash(git cat-file:*)"
-          "Bash(git rev-list:*)"
-          "Bash(git show-ref:*)"
-          "Bash(git for-each-ref:*)"
-          "Bash(git symbolic-ref:*)"
-        ];
+        ] ++ gitCommands ++ nixCommands;
       };
     } // lib.optionalAttrs pkgs.stdenv.isDarwin {
       hooks = {
