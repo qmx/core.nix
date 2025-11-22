@@ -23,6 +23,11 @@ let
     "Bash(nix search:*)"
     "Bash(nix show-derivation:*)"
   ];
+
+  generalCommands = [
+    "Bash(find:*)"
+    "WebSearch"
+  ];
 in
 {
   programs.claude-code = {
@@ -31,9 +36,7 @@ in
       includeCoAuthoredBy = false;
       alwaysThinkingEnabled = true;
       permissions = {
-        auto-approve = [
-          "Bash(find:*)"
-        ] ++ gitCommands ++ nixCommands;
+        auto-approve = generalCommands ++ gitCommands ++ nixCommands;
       };
     } // lib.optionalAttrs pkgs.stdenv.isDarwin {
       hooks = {
