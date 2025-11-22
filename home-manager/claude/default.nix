@@ -64,6 +64,9 @@ in
       alwaysThinkingEnabled = true;
       permissions = {
         auto-approve = generalCommands ++ gitCommands ++ nixCommands ++ beadsCommands ++ tmuxCommands;
+        deny = [
+          "Bash(nix develop:*)"
+        ];
       };
       hooks = {
         PreToolUse = [
