@@ -20,6 +20,7 @@ let
 
   nixCommands = [
     "Bash(nix build:*)"
+    "Bash(nix flake check:*)"
     "Bash(nix log:*)"
     "Bash(nix search:*)"
     "Bash(nix show-derivation:*)"
