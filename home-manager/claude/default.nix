@@ -15,6 +15,7 @@ let
     "Bash(git show-ref:*)"
     "Bash(git for-each-ref:*)"
     "Bash(git symbolic-ref:*)"
+    "Bash(git ls-remote:*)"
   ];
 
   nixCommands = [
