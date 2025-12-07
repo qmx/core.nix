@@ -68,18 +68,26 @@ Add to your dotfiles `flake.nix`:
 {
   inputs = {
     core.url = "github:qmx/core.nix";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
-  outputs = { core, nixpkgs, home-manager, nix-darwin, ... }: {
+  outputs = { core, nixpkgs-unstable, nixpkgs-stable, home-manager, nix-darwin, ... }:
+  let
+    system = "aarch64-darwin";
+    # Use mkPkgs helper to get pkgs and pkgs-stable
+    corePkgs = core.lib.mkPkgs {
+      inherit system nixpkgs-unstable nixpkgs-stable;
+    };
+  in {
     # System configuration
     darwinConfigurations."hostname" = nix-darwin.lib.darwinSystem {
       modules = [
@@ -96,10 +104,36 @@ Add to your dotfiles `flake.nix`:
         ./modules/home-manager    # Your overrides
         ./hosts/hostname/home-manager
       ];
+      extraSpecialArgs = {
+        pkgs-stable = corePkgs.pkgs-stable;
+      };
     };
   };
 }
 ```
+
+### Helper Functions
+
+#### `core.lib.mkPkgs`
+
+Creates package sets for a given system. Returns `{ pkgs, pkgs-stable }`.
+
+- `pkgs` - From your nixpkgs-unstable input
+- `pkgs-stable` - From your nixpkgs-stable input
+
+```nix
+corePkgs = core.lib.mkPkgs {
+  system = "aarch64-darwin";  # or "x86_64-linux", etc.
+  inherit nixpkgs-unstable nixpkgs-stable;  # your flake inputs
+};
+
+# Use in modules via extraSpecialArgs:
+extraSpecialArgs = {
+  pkgs-stable = corePkgs.pkgs-stable;
+};
+```
+
+**Note**: Both `nixpkgs-unstable` and `nixpkgs-stable` parameters are required. This allows you to control all nixpkgs versions from your dotfiles flake, keeping version pinning decisions in one place.
 
 ### Local Development
 

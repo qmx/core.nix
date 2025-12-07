@@ -1,15 +1,12 @@
 {
   description = "Opinionated Core Nix Configuration";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
-  };
+  inputs = { };
 
-  outputs = { nixpkgs, nixpkgs-stable, ... }: {
+  outputs = { ... }: {
     lib = {
-      mkPkgs = system: {
-        pkgs = import nixpkgs { inherit system; };
+      mkPkgs = { system, nixpkgs-unstable, nixpkgs-stable }: {
+        pkgs = import nixpkgs-unstable { inherit system; };
         pkgs-stable = import nixpkgs-stable { inherit system; };
       };
     };
