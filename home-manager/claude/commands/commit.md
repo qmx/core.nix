@@ -23,10 +23,10 @@ Recent commits:
 
 ## Your task
 
-Based on the local changes, take one of these two options:
+Based on the local changes:
 
-* if the local changes are roughly of one logical task and unit of work, create a single commit and go ahead and commit it.
-* if there are multiple seemingly unrelated units of work present, first ask and give a bullet point per commit you are planning to do in the stack. Keep the stack to 5 commits or fewer. Don't make commits before you asked and presented the plan of the stack.
+* If the local changes are one logical unit of work, create a single commit.
+* If there are multiple unrelated units of work, split them into separate granular commits (up to 5). Do this automatically without asking - just proceed with the granular commits.
 
 ## Reminders
 
