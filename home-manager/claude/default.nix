@@ -30,6 +30,16 @@ let
     "Bash(find:*)"
     "WebSearch"
   ];
+
+  beadsMcpCommands = [
+    "mcp__beads__set_context"
+    "mcp__beads__show"
+    "mcp__beads__update"
+    "mcp__beads__stats"
+    "mcp__beads__ready"
+    "mcp__beads__list"
+    "mcp__beads__close"
+  ];
 in
 {
   programs.claude-code = {
@@ -38,7 +48,7 @@ in
       includeCoAuthoredBy = false;
       alwaysThinkingEnabled = true;
       permissions = {
-        auto-approve = generalCommands ++ gitCommands ++ nixCommands;
+        auto-approve = generalCommands ++ gitCommands ++ nixCommands ++ beadsMcpCommands;
       };
       hooks = {
         PreCompact = [
