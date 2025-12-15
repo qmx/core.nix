@@ -1,0 +1,4 @@
+{ beads, ... }:
+{
+  home.packages = [ beads ];
+}
