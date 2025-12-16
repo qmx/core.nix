@@ -31,6 +31,20 @@ let
     "Bash(grep:*)"
     "WebSearch"
   ];
+
+  beadsCommands = [
+    "Bash(bd create:*)"
+    "Bash(bd close:*)"
+    "Bash(bd ready:*)"
+    "Bash(bd list:*)"
+    "Bash(bd show:*)"
+    "Bash(bd update:*)"
+    "Bash(bd dep:*)"
+    "Bash(bd blocked:*)"
+    "Bash(bd sync:*)"
+    "Bash(bd stats:*)"
+    "Bash(bd doctor:*)"
+  ];
 in
 {
   home.packages = with pkgs; [
@@ -43,7 +57,7 @@ in
       includeCoAuthoredBy = false;
       alwaysThinkingEnabled = true;
       permissions = {
-        auto-approve = generalCommands ++ gitCommands ++ nixCommands;
+        auto-approve = generalCommands ++ gitCommands ++ nixCommands ++ beadsCommands;
       };
       hooks = {
         PreCompact = [
