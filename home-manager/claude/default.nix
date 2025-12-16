@@ -32,6 +32,10 @@ let
   ];
 in
 {
+  home.packages = with pkgs; [
+    coreutils  # Required for du in /commit command
+  ];
+
   programs.claude-code = {
     enable = true;
     settings = {
