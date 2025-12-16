@@ -28,6 +28,7 @@ let
 
   generalCommands = [
     "Bash(find:*)"
+    "Bash(grep:*)"
     "WebSearch"
   ];
 in
