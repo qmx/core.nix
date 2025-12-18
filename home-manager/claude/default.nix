@@ -100,9 +100,13 @@ in
     commands = {
       commit = builtins.readFile ./commands/commit.md;
     };
-    skills = {
-      beads = beadsSkill;
-    };
+  };
+
+  # Use home.file directly since programs.claude-code.skills requires a path type,
+  # but flake inputs coerce to strings
+  home.file.".claude/skills/beads" = {
+    source = beadsSkill;
+    recursive = true;
   };
 
   programs.git.ignores = [
