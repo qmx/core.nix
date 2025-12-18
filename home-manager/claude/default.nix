@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, beadsSkill, ... }:
 let
   gitCommands = [
     "Bash(git ls-tree:*)"
@@ -99,6 +99,9 @@ in
     };
     commands = {
       commit = builtins.readFile ./commands/commit.md;
+    };
+    skills = {
+      beads = beadsSkill;
     };
   };
 
