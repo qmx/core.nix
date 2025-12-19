@@ -59,31 +59,7 @@ in
       permissions = {
         auto-approve = generalCommands ++ gitCommands ++ nixCommands ++ beadsCommands;
       };
-      hooks = {
-        PreCompact = [
-          {
-            matcher = "";
-            hooks = [
-              {
-                type = "command";
-                command = "bd prime";
-              }
-            ];
-          }
-        ];
-        SessionStart = [
-          {
-            matcher = "";
-            hooks = [
-              {
-                type = "command";
-                command = "bd prime";
-              }
-            ];
-          }
-        ];
-      }
-      // lib.optionalAttrs pkgs.stdenv.isDarwin {
+      hooks = lib.optionalAttrs pkgs.stdenv.isDarwin {
         Notification = [
           {
             matcher = "";
