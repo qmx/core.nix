@@ -45,6 +45,11 @@ let
     "Bash(bd stats:*)"
     "Bash(bd doctor:*)"
   ];
+
+  tmuxCommands = [
+    "Bash(tmux capture-pane:*)"
+    "Bash(tmux list-panes:*)"
+  ];
 in
 {
   home.packages = with pkgs; [
@@ -57,7 +62,7 @@ in
       includeCoAuthoredBy = false;
       alwaysThinkingEnabled = true;
       permissions = {
-        auto-approve = generalCommands ++ gitCommands ++ nixCommands ++ beadsCommands;
+        auto-approve = generalCommands ++ gitCommands ++ nixCommands ++ beadsCommands ++ tmuxCommands;
       };
       hooks = lib.optionalAttrs pkgs.stdenv.isDarwin {
         Notification = [
