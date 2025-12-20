@@ -2,6 +2,7 @@
 {
   programs.zsh = {
     enable = true;
+    defaultKeymap = "emacs";
 
     history = {
       size = 50000;
