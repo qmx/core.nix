@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, lib, beadsSkill, ... }:
+{ pkgs, pkgs-unstable, lib, ... }:
 let
   gitCommands = [
     "Bash(git ls-tree:*)"
@@ -82,13 +82,6 @@ in
     commands = {
       commit = builtins.readFile ./commands/commit.md;
     };
-  };
-
-  # Use home.file directly since programs.claude-code.skills requires a path type,
-  # but flake inputs coerce to strings
-  home.file.".claude/skills/beads" = {
-    source = beadsSkill;
-    recursive = true;
   };
 
   programs.git.ignores = [
