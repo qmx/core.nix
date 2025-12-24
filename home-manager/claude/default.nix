@@ -1,4 +1,4 @@
-{ pkgs, lib, beadsSkill, ... }:
+{ pkgs, pkgs-unstable, lib, beadsSkill, ... }:
 let
   gitCommands = [
     "Bash(git ls-tree:*)"
@@ -58,6 +58,7 @@ in
 
   programs.claude-code = {
     enable = true;
+    package = pkgs-unstable.claude-code;
     settings = {
       includeCoAuthoredBy = false;
       alwaysThinkingEnabled = true;
