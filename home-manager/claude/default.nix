@@ -65,14 +65,26 @@ in
       permissions = {
         auto-approve = generalCommands ++ gitCommands ++ nixCommands ++ beadsCommands ++ tmuxCommands;
       };
-      hooks = lib.optionalAttrs pkgs.stdenv.isDarwin {
+      hooks = {
+        PreToolUse = [
+          {
+            matcher = "Bash";
+            hooks = [
+              {
+                type = "command";
+                command = "${pkgs.jq}/bin/jq -e '.tool_input.command | test(\"git.*push|push.*git\")' > /dev/null && { echo 'Git push blocked. Ask user to push manually.' >&2; exit 2; }; exit 0";
+              }
+            ];
+          }
+        ];
+      } // lib.optionalAttrs pkgs.stdenv.isDarwin {
         Notification = [
           {
             matcher = "";
             hooks = [
               {
                 type = "command";
-                command = "jq -r '.message' | xargs -I {} /usr/bin/osascript -e 'display notification \"{}\" with title \"Claude\" sound name \"Sosumi\"'";
+                command = "${pkgs.jq}/bin/jq -r '.message' | xargs -I {} /usr/bin/osascript -e 'display notification \"{}\" with title \"Claude\" sound name \"Sosumi\"'";
               }
             ];
           }
