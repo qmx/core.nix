@@ -32,20 +32,6 @@ let
     "WebSearch"
   ];
 
-  beadsCommands = [
-    "Bash(bd create:*)"
-    "Bash(bd close:*)"
-    "Bash(bd ready:*)"
-    "Bash(bd list:*)"
-    "Bash(bd show:*)"
-    "Bash(bd update:*)"
-    "Bash(bd dep:*)"
-    "Bash(bd blocked:*)"
-    "Bash(bd sync:*)"
-    "Bash(bd stats:*)"
-    "Bash(bd doctor:*)"
-  ];
-
   tmuxCommands = [
     "Bash(tmux capture-pane:*)"
     "Bash(tmux list-panes:*)"
@@ -63,7 +49,7 @@ in
       includeCoAuthoredBy = false;
       alwaysThinkingEnabled = true;
       permissions = {
-        auto-approve = generalCommands ++ gitCommands ++ nixCommands ++ beadsCommands ++ tmuxCommands;
+        auto-approve = generalCommands ++ gitCommands ++ nixCommands ++ tmuxCommands;
         deny = [
           "Bash(nix develop:*)"
         ];

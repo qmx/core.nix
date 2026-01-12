@@ -1,7 +1,6 @@
 { ... }:
 {
   imports = [
-    ./beads
     ./btop
     ./claude
     ./direnv

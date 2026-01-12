@@ -1,4 +1,0 @@
-{ beads, ... }:
-{
-  home.packages = [ beads ];
-}
