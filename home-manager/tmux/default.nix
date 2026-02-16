@@ -6,6 +6,7 @@
     baseIndex = 1;
     extraConfig = ''
       set -g allow-passthrough on
+      set -g status-left '[#S] #h '
     '';
   };
 }
