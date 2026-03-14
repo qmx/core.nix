@@ -1,6 +1,9 @@
 # General Settings
 auto-update = off
 
+# Ghostty keybindings for pi/coding agent compatibility
+keybind = shift+enter=text:\n
+
 # Theme - auto-switches with macOS appearance
 theme = dark:Gruvbox Dark Hard,light:Gruvbox Light Hard
 
