@@ -5,6 +5,7 @@
     mouse = true;
     baseIndex = 1;
     extraConfig = ''
+      set -g extended-keys on
       set -g allow-passthrough on
       set -g status-left '[#S] #h '
       set -g status-left-length 20
