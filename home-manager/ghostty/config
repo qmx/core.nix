@@ -2,8 +2,8 @@
 auto-update = off
 
 # Ghostty keybindings for pi/coding agent compatibility
-# Required for Shift+Enter to work in tmux (per pi documentation)
-keybind = shift+enter=text:\n
+# NOTE: Removed shift+enter=text:\n - it breaks Shift+Enter in tmux via Mosh
+# Ghostty now sends the native Shift+Enter event which Mosh passes through to tmux
 
 # Theme - auto-switches with macOS appearance
 theme = dark:Gruvbox Dark Hard,light:Gruvbox Light Hard
