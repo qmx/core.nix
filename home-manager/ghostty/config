@@ -2,7 +2,8 @@
 auto-update = off
 
 # Ghostty keybindings for pi/coding agent compatibility
-keybind = shift+enter=text:\n
+# NOTE: Removed shift+enter=text:\n remapping - it breaks Shift+Enter detection in pi/tmux
+# Let Ghostty send the native CSI-u sequence for Shift+Enter instead
 
 # Theme - auto-switches with macOS appearance
 theme = dark:Gruvbox Dark Hard,light:Gruvbox Light Hard
