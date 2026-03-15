@@ -14,9 +14,6 @@
       # Explicitly bind Shift+Enter to send CSI-u sequence
       # This is required because tmux only forwards extended keys to panes
       # that request them via Kitty activation sequence, which pi doesn't send
-      bind-key -n S-Enter send-keys -X literal "\e[13;2u"
-      
-      # Also bind Shift+Enter in emacs mode
       bind-key -n S-Enter send-keys "\e[13;2u"
       
       set -g status-left '[#S] #h '
