@@ -4,6 +4,7 @@
     enable = true;
     mouse = true;
     baseIndex = 1;
+    terminal = "tmux-256color";
     extraConfig = ''
       set -g extended-keys on
       set -g extended-keys-format csi-u
