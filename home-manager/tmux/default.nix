@@ -11,10 +11,8 @@
       set -g extended-keys-format csi-u
       set -g allow-passthrough on
       
-      # Explicitly bind Shift+Enter to send CSI-u sequence
-      # Required because tmux doesn't forward extended keys to panes
-      # that don't request them via Kitty activation sequence
-      bind-key -n S-Enter send-keys "\e[13;2u"
+      # Tell tmux that Ghostty (xterm-kitty) supports extended keys
+      set -g terminal-features ',xterm-kitty:extkeys'
       
       set -g status-left '[#S] #h '
       set -g status-left-length 20

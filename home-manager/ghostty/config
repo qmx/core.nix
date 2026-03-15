@@ -1,10 +1,6 @@
 # General Settings
 auto-update = off
 
-# Ghostty keybindings for pi/coding agent compatibility
-# Send CSI-u sequence for Shift+Enter (modifier 2 = Shift)
-keybind = shift+enter=text:\e[13;2u
-
 # Theme - auto-switches with macOS appearance
 theme = dark:Gruvbox Dark Hard,light:Gruvbox Light Hard
 
