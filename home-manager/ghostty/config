@@ -3,7 +3,7 @@ auto-update = off
 
 # Ghostty keybindings for pi/coding agent compatibility
 # Send CSI-u sequence directly for Shift+Enter (works in tmux and outside)
-keybind = shift+enter=text:\e[13;2u
+keybind = shift+enter=text:\e[13;3u
 
 # Theme - auto-switches with macOS appearance
 theme = dark:Gruvbox Dark Hard,light:Gruvbox Light Hard
