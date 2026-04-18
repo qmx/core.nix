@@ -2,7 +2,6 @@
 {
   imports = [
     ./btop
-    ./direnv
     ./gh
     ./ghostty
     ./git

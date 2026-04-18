@@ -20,7 +20,6 @@ core.nix/
 ├── flake.nix                      # Exports nix-darwin and home-manager
 ├── home-manager/
 │   ├── default.nix                # Imports all home-manager modules
-│   ├── direnv/                    # direnv configuration
 │   ├── gh/                        # GitHub CLI
 │   ├── git/                       # Git configuration
 │   ├── gnupg/                     # GPG agent setup
@@ -41,7 +40,6 @@ core.nix/
 
 ### Home Manager Modules
 
-- **direnv** - Automatic environment loading
 - **gh** - GitHub CLI
 - **git** - Git with sensible defaults (no personal info)
 - **gnupg** - GPG agent with SSH support
