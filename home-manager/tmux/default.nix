@@ -23,7 +23,7 @@
       set -as terminal-features ',tmux-256color:extkeys,hyperlinks,sync,usstyle,overline'
 
       # Deterministic host-dependent status bar color (colour0-colour15)
-      set -g status-style "bg=colour#[(hostname | cksum | awk '{print $1}') % 16]"
+      run-shell 'idx=$(hostname | cksum | cut -d " " -f1); tmux set -g status-style "bg=colour$((idx % 16))"'
 
       set -g status-left '[#S] #h '
       set -g status-left-length 20
