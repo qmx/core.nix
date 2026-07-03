@@ -1,19 +1,21 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    withRuby = true;
+    withPython3 = true;
 
     extraPackages = with pkgs; [
       nil # Nix LSP
-      nixfmt-rfc-style # Nix formatter
+      nixfmt # Nix formatter
       lua-language-server # Lua LSP
       stylua # Lua formatter
     ];
 
-    extraLuaConfig = builtins.readFile ./init.lua;
+    initLua = builtins.readFile ./init.lua;
 
     plugins = with pkgs.vimPlugins; [
       # Support for writing Nix expressions
@@ -66,8 +68,6 @@
         type = "lua";
         config = builtins.readFile ./plugins/claudecode.lua;
       }
-
-      
 
       # Collection of small QoL plugins (required by claudecode)
       snacks-nvim
