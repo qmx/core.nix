@@ -9,7 +9,6 @@
     withPython3 = true;
 
     extraPackages = with pkgs; [
-      nil # Nix LSP
       nixfmt # Nix formatter
       lua-language-server # Lua LSP
       stylua # Lua formatter

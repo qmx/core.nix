@@ -1,20 +1,5 @@
 -- LSP configuration using vim.lsp.config (Neovim 0.11+)
 
--- Nix LSP
-vim.lsp.config('nil_ls', {
-  cmd = { 'nil' },
-  filetypes = { 'nix' },
-  root_markers = { 'flake.nix', '.git' },
-  settings = {
-    ['nil'] = {
-      formatting = {
-        command = { 'nixfmt' },
-      },
-    },
-  },
-})
-vim.lsp.enable('nil_ls')
-
 -- Lua LSP
 vim.lsp.config('lua_ls', {
   cmd = { 'lua-language-server' },
