@@ -2,7 +2,8 @@
 auto-update = off
 
 # Theme - auto-switches with macOS appearance
-theme = dark:Gruvbox Dark Hard,light:Gruvbox Light Hard
+theme = light:iTerm2 Solarized Light,dark:Solarized Dark Higher Contrast
+minimum-contrast = 3
 
 # Font settings
 font-size = 14
