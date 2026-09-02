@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ options, pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -13,8 +13,6 @@
       lua-language-server # Lua LSP
       stylua # Lua formatter
     ];
-
-    initLua = builtins.readFile ./init.lua;
 
     plugins = with pkgs.vimPlugins; [
       # Support for writing Nix expressions
@@ -95,5 +93,8 @@
       # Required dependency for telescope
       plenary-nvim
     ];
+
+    ${if options.programs.neovim ? initLua then "initLua" else "extraLuaConfig"} =
+      builtins.readFile ./init.lua;
   };
 }
