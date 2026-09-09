@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./agent-skills
     ./btop
     ./gh
     ./ghostty
