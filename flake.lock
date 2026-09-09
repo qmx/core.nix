@@ -1,6 +1,63 @@
 {
   "nodes": {
-    "root": {}
+    "humanizer-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787119133,
+        "narHash": "sha256-n08pud3m9ka1Ymqv6qinSCUku975FM2LJRboi9ur5D4=",
+        "owner": "blader",
+        "repo": "humanizer",
+        "rev": "e2e92e7b4b8229253ed5c8e81dc65463fdeddda5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "blader",
+        "repo": "humanizer",
+        "rev": "e2e92e7b4b8229253ed5c8e81dc65463fdeddda5",
+        "type": "github"
+      }
+    },
+    "humanlayer-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786633530,
+        "narHash": "sha256-lJvu9CGAN/+dzmzck0CodRXn/p7GUkCbfyZxys4nIoU=",
+        "owner": "humanlayer",
+        "repo": "skills",
+        "rev": "3c2629142c5d437428269b1b722b08c0b87f574d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "humanlayer",
+        "repo": "skills",
+        "rev": "3c2629142c5d437428269b1b722b08c0b87f574d",
+        "type": "github"
+      }
+    },
+    "mattpocock-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786025105,
+        "narHash": "sha256-I/EXHGW92nXz6JCLp8SKGgzXrbbUTkLAfxv8bc/ThwQ=",
+        "owner": "mattpocock",
+        "repo": "skills",
+        "rev": "6acc160e4e0cd062dbbbd7a1b26ae92855edf07e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mattpocock",
+        "ref": "v1.2.3",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "humanizer-skills": "humanizer-skills",
+        "humanlayer-skills": "humanlayer-skills",
+        "mattpocock-skills": "mattpocock-skills"
+      }
+    }
   },
   "root": "root",
   "version": 7

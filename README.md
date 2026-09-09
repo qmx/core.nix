@@ -1,6 +1,6 @@
 # core.nix
 
-Opinionated core Nix configuration modules for macOS using nix-darwin and home-manager.
+Opinionated core Nix configuration modules for macOS and Linux using nix-darwin and home-manager.
 
 This repository provides reusable, modular configurations for common development tools and system settings. It's designed to be imported as a flake input into your personal dotfiles repository.
 
@@ -20,6 +20,7 @@ core.nix/
 ├── flake.nix                      # Exports nix-darwin and home-manager
 ├── home-manager/
 │   ├── default.nix                # Imports all home-manager modules
+│   ├── agent-skills/               # Shared AI agent skills
 │   ├── gh/                        # GitHub CLI
 │   ├── git/                       # Git configuration
 │   ├── gnupg/                     # GPG agent setup
@@ -40,6 +41,7 @@ core.nix/
 
 ### Home Manager Modules
 
+- **agent-skills** - Pinned shared skills for AI coding agents
 - **gh** - GitHub CLI
 - **git** - Git with sensible defaults (no personal info)
 - **gnupg** - GPG agent with SSH support
@@ -81,10 +83,8 @@ Add to your dotfiles `flake.nix`:
   outputs = { core, nixpkgs-unstable, nixpkgs-stable, home-manager, nix-darwin, ... }:
   let
     system = "aarch64-darwin";
-    # Use mkPkgs helper to get pkgs and pkgs-stable
-    corePkgs = core.lib.mkPkgs {
-      inherit system nixpkgs-unstable nixpkgs-stable;
-    };
+    pkgs = import nixpkgs-unstable { inherit system; };
+    pkgs-stable = import nixpkgs-stable { inherit system; };
   in {
     # System configuration
     darwinConfigurations."hostname" = nix-darwin.lib.darwinSystem {
@@ -97,41 +97,24 @@ Add to your dotfiles `flake.nix`:
 
     # User configuration
     homeConfigurations."username" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
       modules = [
         core.home-manager         # Base configuration
         ./modules/home-manager    # Your overrides
         ./hosts/hostname/home-manager
       ];
       extraSpecialArgs = {
-        pkgs-stable = corePkgs.pkgs-stable;
+        inherit pkgs-stable;
       };
     };
   };
 }
 ```
 
-### Helper Functions
-
-#### `core.lib.mkPkgs`
-
-Creates package sets for a given system. Returns `{ pkgs, pkgs-stable }`.
-
-- `pkgs` - From your nixpkgs-unstable input
-- `pkgs-stable` - From your nixpkgs-stable input
-
-```nix
-corePkgs = core.lib.mkPkgs {
-  system = "aarch64-darwin";  # or "x86_64-linux", etc.
-  inherit nixpkgs-unstable nixpkgs-stable;  # your flake inputs
-};
-
-# Use in modules via extraSpecialArgs:
-extraSpecialArgs = {
-  pkgs-stable = corePkgs.pkgs-stable;
-};
-```
-
-**Note**: Both `nixpkgs-unstable` and `nixpkgs-stable` parameters are required. This allows you to control all nixpkgs versions from your dotfiles flake, keeping version pinning decisions in one place.
+The consumer supplies its main `pkgs` set directly to Home Manager and passes `pkgs-stable` for the
+few core modules that deliberately use stable packages. This keeps nixpkgs version choices in the
+consumer flake. The agent skill sources are different: `core.home-manager` closes over those pinned
+inputs itself, so they require no `extraSpecialArgs` entry.
 
 ### Local Development
 
@@ -154,6 +137,30 @@ nix flake update core
 ## Customization
 
 These modules provide sensible defaults without personal information. Override them in your dotfiles:
+
+Shared agent skills are enabled by default for every consumer of `core.home-manager` and installed in
+`~/.agents/skills`. The default selection comes from pinned versions of the Matt Pocock, HumanLayer,
+and Humanizer skill repositories. Consumers do not need to pass those sources through
+`extraSpecialArgs`.
+
+Disable installation with a normal Home Manager override:
+
+```nix
+programs.agent-skills.enable = false;
+```
+
+Source selectors and the installation target are also overridable. Selectors are relative skill
+directories; `*` may match one complete path component:
+
+```nix
+programs.agent-skills = {
+  target = ".config/agents/skills";
+  sources.mattpocock = {
+    include = [ "skills/engineering/*" ];
+    exclude = [ "skills/engineering/example-skill" ];
+  };
+};
+```
 
 **Example**: Adding personal git config
 
@@ -180,7 +187,8 @@ These modules provide sensible defaults without personal information. Override t
 
 ## Requirements
 
-- macOS (tested on Apple Silicon)
+- macOS or Linux for Home Manager
+- macOS for nix-darwin
 - Nix with flakes enabled
 - nix-darwin
 - home-manager
