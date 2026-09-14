@@ -14,6 +14,10 @@
       url = "github:blader/humanizer/e2e92e7b4b8229253ed5c8e81dc65463fdeddda5";
       flake = false;
     };
+    herdr-skills = {
+      url = "github:herdrdev/herdr/v0.9.0";
+      flake = false;
+    };
   };
 
   outputs =
@@ -21,6 +25,7 @@
       mattpocock-skills,
       humanlayer-skills,
       humanizer-skills,
+      herdr-skills,
       ...
     }:
     {
@@ -58,6 +63,11 @@
                   ]
                 );
                 include = lib.mkDefault [ "humanizer" ];
+              };
+
+              herdr = {
+                src = lib.mkDefault herdr-skills;
+                include = lib.mkDefault [ "skills/herdr" ];
               };
             };
           };

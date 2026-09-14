@@ -140,7 +140,7 @@ These modules provide sensible defaults without personal information. Override t
 
 Shared agent skills are enabled by default for every consumer of `core.home-manager` and installed in
 `~/.agents/skills`. The default selection comes from pinned versions of the Matt Pocock, HumanLayer,
-and Humanizer skill repositories. Consumers do not need to pass those sources through
+Humanizer, and Herdr skill repositories. Consumers do not need to pass those sources through
 `extraSpecialArgs`.
 
 Disable installation with a normal Home Manager override:
