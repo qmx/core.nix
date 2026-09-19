@@ -7,7 +7,7 @@
       flake = false;
     };
     humanlayer-skills = {
-      url = "github:humanlayer/skills/3c2629142c5d437428269b1b722b08c0b87f574d";
+      url = "github:humanlayer/skills/ca7c8088db69e315a8b2deea43820270457f8f3c";
       flake = false;
     };
     humanizer-skills = {
@@ -55,7 +55,10 @@
 
               humanlayer = {
                 src = lib.mkDefault humanlayer-skills;
-                include = lib.mkDefault [ "plugins/show-me/skills/show-me" ];
+                include = lib.mkDefault [
+                  "plugins/show-me/skills/show-me"
+                  "plugins/visual-pr/skills/visual-pr"
+                ];
               };
 
               humanizer = {
