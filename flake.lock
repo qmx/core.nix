@@ -68,12 +68,30 @@
         "type": "github"
       }
     },
+    "qmx-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789787058,
+        "narHash": "sha256-i3WL8LrTS1ZtSsI4wgmgIzZQYpzlivD2P2Ie9mXNgbw=",
+        "owner": "qmx",
+        "repo": "skills",
+        "rev": "7f977fcd6790d5ae7c0403c8272565e469d64f06",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qmx",
+        "ref": "master",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "herdr-skills": "herdr-skills",
         "humanizer-skills": "humanizer-skills",
         "humanlayer-skills": "humanlayer-skills",
-        "mattpocock-skills": "mattpocock-skills"
+        "mattpocock-skills": "mattpocock-skills",
+        "qmx-skills": "qmx-skills"
       }
     }
   },

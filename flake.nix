@@ -18,6 +18,10 @@
       url = "github:herdrdev/herdr/v0.9.0";
       flake = false;
     };
+    qmx-skills = {
+      url = "github:qmx/skills/master";
+      flake = false;
+    };
   };
 
   outputs =
@@ -26,6 +30,7 @@
       humanlayer-skills,
       humanizer-skills,
       herdr-skills,
+      qmx-skills,
       ...
     }:
     {
@@ -68,6 +73,11 @@
               herdr = {
                 src = lib.mkDefault herdr-skills;
                 include = lib.mkDefault [ "skills/herdr" ];
+              };
+
+              qmx = {
+                src = lib.mkDefault qmx-skills;
+                include = lib.mkDefault [ "herdr-worktree" ];
               };
             };
           };
